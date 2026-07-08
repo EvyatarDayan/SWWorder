@@ -111,9 +111,9 @@ struct WordChipButton: View {
         if isCorrect {
             return Color.green.opacity(0.15)
         } else if isIncorrect {
-            return Color.red.opacity(0.15)
+            return Color.appRed.opacity(0.15)
         } else if isSelected {
-            return Color.blue.opacity(0.1)
+            return Color.appRed.opacity(0.1)
         } else {
             return colorScheme == .dark ? Color(.systemGray6) : Color(.systemBackground)
         }
@@ -123,11 +123,11 @@ struct WordChipButton: View {
         if isCorrect {
             return Color.green
         } else if isIncorrect {
-            return Color.red
+            return Color.appRed
         } else if isSelected {
-            return Color.blue
+            return Color.appRed
         } else {
-            return Color.blue.opacity(0.5)
+            return Color.appRed.opacity(0.5)
         }
     }
 }
@@ -147,7 +147,7 @@ struct WorderSummaryModal: View {
                 Spacer()
                 Text(motivationalMessage)
                     .font(.system(size: 24, weight: .bold))
-                    .foregroundColor(.blue)
+                    .foregroundColor(.appRed)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 40)
                 ZStack {
@@ -162,7 +162,7 @@ struct WorderSummaryModal: View {
                     if wrongRatio > 0 {
                         Circle()
                             .trim(from: correctRatio, to: correctRatio + wrongRatio)
-                            .stroke(Color.red, style: StrokeStyle(lineWidth: 30, lineCap: .round))
+                            .stroke(Color.appRed, style: StrokeStyle(lineWidth: 30, lineCap: .round))
                             .frame(width: 200, height: 200)
                             .rotationEffect(.degrees(-90))
                     }
@@ -197,7 +197,7 @@ struct WorderSummaryModal: View {
                         VStack(spacing: 8) {
                             Text("\(wrong)")
                                 .font(.system(size: 36, weight: .bold))
-                                .foregroundColor(.red)
+                                .foregroundColor(.appRed)
                             Text("Wrong")
                                 .font(.system(size: 14, weight: .medium))
                                 .foregroundColor(.secondary)
@@ -309,11 +309,11 @@ struct WorderView: View {
     
     private var feedbackMessage: (text: String, color: Color) {
         let total = correctBlockOrder.count
-        guard total > 0 else { return ("Incorrect!", .red) }
+        guard total > 0 else { return ("Incorrect!", .appRed) }
         let correct = correctWordCount
         switch correct {
-        case 0: return ("Incorrect!", .red)
-        case 1: return ("Not quite!", .red)
+        case 0: return ("Incorrect!", .appRed)
+        case 1: return ("Not quite!", .appRed)
         case total: return ("Excellent!", .green)
         default: return ("Getting there!", .green)
         }
@@ -335,7 +335,7 @@ struct WorderView: View {
                 Spacer()
                 Text(customTitle)
                     .font(.system(size: 28, weight: .bold, design: .rounded))
-                    .foregroundColor(.blue)
+                    .foregroundColor(.appRed)
                 Spacer()
             }
             HStack {
@@ -371,7 +371,7 @@ struct WorderView: View {
                     }) {
                         Text(initialExampleOrder != nil ? "Cancel" : "Reset")
                             .font(.body)
-                            .foregroundColor(.blue)
+                            .foregroundColor(.appRed)
                     }
                 }
             }
@@ -400,11 +400,11 @@ struct WorderView: View {
                             .foregroundColor(.primary)
                             .padding(.horizontal, 12)
                             .padding(.vertical, 8)
-                            .background(showCorrectInAnswerArea ? Color.green.opacity(0.15) : Color.blue.opacity(0.15))
+                            .background(showCorrectInAnswerArea ? Color.green.opacity(0.15) : Color.appRed.opacity(0.15))
                             .cornerRadius(8)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 8)
-                                    .stroke(showCorrectInAnswerArea ? Color.green : Color.blue.opacity(0.5), lineWidth: 1)
+                                    .stroke(showCorrectInAnswerArea ? Color.green : Color.appRed.opacity(0.5), lineWidth: 1)
                             )
                     }
                 }
@@ -428,7 +428,7 @@ struct WorderView: View {
                             .renderingMode(.template)
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 25, height: 25)
-                            .foregroundColor(.blue)
+                            .foregroundColor(.appRed)
                     }
                     .buttonStyle(PlainButtonStyle())
                     .padding(.trailing, -10)
@@ -444,7 +444,7 @@ struct WorderView: View {
         .cornerRadius(12)
         .overlay(
             RoundedRectangle(cornerRadius: 12)
-                .stroke(Color.blue.opacity(0.3), lineWidth: 1)
+                .stroke(Color.appRed.opacity(0.3), lineWidth: 1)
         )
         .padding(.bottom, 8)
         .padding(.horizontal, 20)
@@ -466,7 +466,7 @@ struct WorderView: View {
                     Button(action: undoLastWord) {
                         Text("Undo")
                             .font(.body)
-                            .foregroundColor(selectedWords.isEmpty || showFeedback ? .gray : .blue)
+                            .foregroundColor(selectedWords.isEmpty || showFeedback ? .gray : .appRed)
                     }
                     .disabled(selectedWords.isEmpty || showFeedback)
                     Spacer()
@@ -474,7 +474,7 @@ struct WorderView: View {
                         Button(action: { showingTipPopup = true }) {
                             Text("Info")
                                 .font(.body)
-                                .foregroundColor(.blue)
+                                .foregroundColor(.appRed)
                         }
                     }
                 }
@@ -488,12 +488,12 @@ struct WorderView: View {
                             Button(action: { withAnimation { showTranslation = true } }) {
                                 Text("English translation")
                                     .font(.system(size: 14, weight: .medium))
-                                    .foregroundColor(.blue)
+                                    .foregroundColor(.appRed)
                             }
                         } else {
                             Text(example.answerTranslation)
                                 .font(.system(size: 18, weight: .bold))
-                                .foregroundColor(.blue)
+                                .foregroundColor(.appRed)
                                 .multilineTextAlignment(.center)
                                 .padding(.horizontal, 20)
                         }
@@ -569,7 +569,7 @@ struct WorderView: View {
                 HStack(spacing: 12) {
                     Text("Answer: \(example.answer)")
                     .font(.system(size: 18, weight: .bold))
-                    .foregroundColor(.blue)
+                    .foregroundColor(.appRed)
                         .multilineTextAlignment(.leading)
 //                    Spacer()
 //                    Button(action: {
@@ -585,7 +585,7 @@ struct WorderView: View {
 //                            .renderingMode(.template)
 //                            .aspectRatio(contentMode: .fit)
 //                            .frame(width: 28, height: 28)
-//                            .foregroundColor(.blue)
+//                            .foregroundColor(.appRed)
 //                    }
 //                    .buttonStyle(PlainButtonStyle())
                 }
@@ -598,7 +598,7 @@ struct WorderView: View {
                             .renderingMode(.template)
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 24, height: 24)
-                            .foregroundColor(.blue)
+                            .foregroundColor(.appRed)
                             .transition(.opacity)
                     }
                     Text("Choose the order")
@@ -623,7 +623,7 @@ struct WorderView: View {
         full.append(scrambled)
         full.append(AttributedString(sessionType == .test ? " into correct 10 sentences. " : " into correct 20 sentences. "))
         var lycka = AttributedString("Lycka till!")
-        lycka.foregroundColor = .blue
+        lycka.foregroundColor = .appRed
         lycka.font = .body.bold()
         full.append(lycka)
         return Text(full)
@@ -636,8 +636,10 @@ struct WorderView: View {
 //            Image("practice")
             Image(sessionType == .test ? "test" : "practice")
                 .resizable()
+                .renderingMode(.template)
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 80, height: 80)
+                .foregroundColor(.appRed)
             startScreenAttributedSubtitle
                 .font(.body)
                 .foregroundColor(.primary)
@@ -656,17 +658,17 @@ struct WorderView: View {
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)
-                    .background(Color.blue)
+                    .background(Color.appRed)
                     .cornerRadius(12)
             }
             .padding(.horizontal, 40)
             Button(action: { showingHistory = true }) {
                 Text(sessionType == .test ? "Previous tests" : "Previous practices")
                     .font(.headline)
-                    .foregroundColor(.blue)
+                    .foregroundColor(.appRed)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)
-                    .background(Color.blue.opacity(0.1))
+                    .background(Color.appRed.opacity(0.1))
                     .cornerRadius(12)
             }
             .padding(.horizontal, 60)
@@ -723,7 +725,7 @@ struct WorderView: View {
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 16)
-                            .background((showFeedback && sessionQuestions < sessionLimit) ? Color.blue : Color.gray)
+                            .background((showFeedback && sessionQuestions < sessionLimit) ? Color.appRed : Color.gray)
                             .cornerRadius(12)
                     }
                     .disabled(!showFeedback || sessionQuestions >= sessionLimit)

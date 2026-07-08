@@ -10,8 +10,9 @@ import UIKit
 
 struct ContentView: View {
     @AppStorage("darkModeEnabled") private var darkModeEnabled = false
+    @AppStorage(WelcomeStorage.skipWelcomeKey) private var skipWelcomeScreen = false
     @State private var selectedTab: Int = 2 // Default to Practice (index 2)
-    @State private var showingLogo: Bool = true
+    @State private var showingWelcome = true
     
     // Menu height constant - adjust this to change menu height
     private let menuHeight: CGFloat = 40
@@ -105,12 +106,11 @@ struct ContentView: View {
                     .zIndex(1) // Ensure menu is above content
                 }
                 
-                // Logo overlay shown on startup
-                if showingLogo {
+                // Welcome screen shown on startup (unless skipped)
+                if showingWelcome && !skipWelcomeScreen {
                     LogoView {
-                        // After logo animation completes, hide it
                         withAnimation {
-                            showingLogo = false
+                            showingWelcome = false
                         }
                     }
                     .zIndex(100)
@@ -139,17 +139,17 @@ struct TabBarButton: View {
                         .renderingMode(.template)
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 20, height: 20)
-                        .foregroundColor(isSelected ? .primary : .secondary)
+                        .foregroundColor(isSelected ? .appRed : .secondary)
                 } else {
                     Text(icon)
                         .font(.system(size: 20, weight: isSelected ? .semibold : .regular))
-                        .foregroundColor(isSelected ? .primary : .secondary)
+                        .foregroundColor(isSelected ? .appRed : .secondary)
                 }
                 
                 // Text below icon
                 Text(label)
                     .font(.system(size: 10, weight: isSelected ? .semibold : .regular))
-                    .foregroundColor(isSelected ? .primary : .secondary)
+                    .foregroundColor(isSelected ? .appRed : .secondary)
                     .lineLimit(1)
             }
             .frame(maxWidth: .infinity)

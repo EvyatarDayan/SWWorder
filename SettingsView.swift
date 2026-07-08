@@ -293,7 +293,7 @@ struct SettingsView: View {
                     Spacer()
                     Text("Settings")
                         .font(.system(size: 28, weight: .bold, design: .rounded))
-                        .foregroundColor(.blue)
+                        .foregroundColor(.appRed)
                     Spacer()
                 }
             }
@@ -306,7 +306,7 @@ struct SettingsView: View {
                     SettingsSection(header: "MODE") {
                         SettingsRow(
                             icon: "moon.fill",
-                            iconColor: .purple,
+                            iconColor: .appRed,
                             title: "Dark Mode",
                             subtitle: "Enable/Disable dark mode",
                             accessory: .toggle(isOn: $darkModeEnabled)
@@ -316,7 +316,7 @@ struct SettingsView: View {
                     SettingsSection(header: "SCHEDULE") {
                         SettingsRow(
                             icon: "clock",
-                            iconColor: .orange,
+                            iconColor: .appRed,
                             title: "Schedule Notifications",
                             subtitle: notificationSubtitle,
                             accessory: .chevron(action: {
@@ -328,7 +328,7 @@ struct SettingsView: View {
                     SettingsSection(header: "LEARNING") {
                         SettingsRow(
                             icon: "lightbulb.fill",
-                            iconColor: .yellow,
+                            iconColor: .appRed,
                             title: "Learning Tips",
                             subtitle: "Effective learning strategies",
                             accessory: .chevron(action: {
@@ -340,7 +340,7 @@ struct SettingsView: View {
                     SettingsSection(header: "SUPPORT") {
                         SettingsRow(
                             icon: "questionmark.circle.fill",
-                            iconColor: .blue,
+                            iconColor: .appRed,
                             title: "Help & Support",
                             subtitle: "Get help and contact support",
                             accessory: .chevron(action: {
@@ -350,7 +350,7 @@ struct SettingsView: View {
                         
                         SettingsRow(
                             icon: "doc.text.fill",
-                            iconColor: .blue,
+                            iconColor: .appRed,
                             title: "Terms & Privacy",
                             subtitle: "View terms and privacy policy",
                             accessory: .chevron(action: {
@@ -360,7 +360,7 @@ struct SettingsView: View {
                         
                         SettingsRow(
                             icon: "info.circle.fill",
-                            iconColor: .blue,
+                            iconColor: .appRed,
                             title: "About",
                             subtitle: "App version and information",
                             accessory: .chevron(action: {
@@ -372,7 +372,7 @@ struct SettingsView: View {
                     SettingsSection(header: "CACHE") {
                         SettingsRow(
                             icon: "clock.arrow.circlepath",
-                            iconColor: .red,
+                            iconColor: .appRed,
                             title: "Clear History",
                             subtitle: "Delete all history records",
                             accessory: .button(
@@ -497,12 +497,12 @@ struct SettingsRow: View {
                             .foregroundColor(.white)
                             .padding(.horizontal, 8)
                             .padding(.vertical, 4)
-                            .background(Color.red)
+                            .background(Color.appRed)
                             .cornerRadius(12)
                     }
                     Text("Clear")
                         .font(.system(size: 15, weight: .semibold))
-                        .foregroundColor(.red)
+                        .foregroundColor(.appRed)
                 }
             }
         }
@@ -566,13 +566,19 @@ struct NotificationSettingsModal: View {
                     }
                 }
             }
-            .navigationTitle("Notifications")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Notifications")
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.appRed)
+                }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") {
                         dismiss()
                     }
+                    .foregroundColor(.appRed)
                 }
             }
         }
@@ -593,7 +599,7 @@ struct LearningTipsView: View {
                         Text("Swedish Word Order: The V2 Rule")
                             .font(.title2)
                             .fontWeight(.bold)
-                            .foregroundColor(.primary)
+                            .foregroundColor(.appRed)
                         Text("In Swedish, the Verb is the anchor of the sentence. It must always be the second element.")
                             .font(.body)
                             .foregroundColor(.secondary)
@@ -611,14 +617,14 @@ struct LearningTipsView: View {
                         Text("1. The Basic Start")
                             .font(.headline)
                             .fontWeight(.semibold)
-                            .foregroundColor(.primary)
+                            .foregroundColor(.appRed)
                         Text("When you start with the person (Subject), it looks just like English.")
                             .font(.body)
                             .foregroundColor(.primary)
                         Text("Subject + VERB + Rest")
                             .font(.system(.body, design: .monospaced))
                             .fontWeight(.medium)
-                            .foregroundColor(.blue)
+                            .foregroundColor(.appRed)
                         Text("Jag + läser + en bok. (I am reading a book.)")
                             .font(.body)
                             .foregroundColor(.primary)
@@ -636,14 +642,14 @@ struct LearningTipsView: View {
                         Text("2. The \"Switch\" (V2 Rule)")
                             .font(.headline)
                             .fontWeight(.semibold)
-                            .foregroundColor(.primary)
+                            .foregroundColor(.appRed)
                         Text("If you start with a Time (Today, Now) or Place (Here, In Sweden), the verb stays in spot #2. This pushes the Subject to spot #3.")
                             .font(.body)
                             .foregroundColor(.primary)
                         Text("Time/Place + VERB + Subject + Rest")
                             .font(.system(.body, design: .monospaced))
                             .fontWeight(.medium)
-                            .foregroundColor(.blue)
+                            .foregroundColor(.appRed)
                         Text("Nu + läser + jag + en bok. (Now am reading I a book.)")
                             .font(.body)
                             .foregroundColor(.primary)
@@ -661,14 +667,14 @@ struct LearningTipsView: View {
                         Text("3. Adding \"Inte\" (Not)")
                             .font(.headline)
                             .fontWeight(.semibold)
-                            .foregroundColor(.primary)
+                            .foregroundColor(.appRed)
                         Text("To make a sentence negative, put inte directly after the verb.")
                             .font(.body)
                             .foregroundColor(.primary)
                         Text("Subject + VERB + inte")
                             .font(.system(.body, design: .monospaced))
                             .fontWeight(.medium)
-                            .foregroundColor(.blue)
+                            .foregroundColor(.appRed)
                         Text("Jag + läser + inte. (I do not read.)")
                             .font(.body)
                             .foregroundColor(.primary)
@@ -708,7 +714,7 @@ struct LearningTipsView: View {
                         Text("Here is the simplest way to think about it:")
                             .font(.headline)
                             .fontWeight(.semibold)
-                            .foregroundColor(.primary)
+                            .foregroundColor(.appRed)
                         
                         // 1. The Standard Way (S-V-O)
                         VStack(alignment: .leading, spacing: 8) {
@@ -794,6 +800,7 @@ struct LearningTipsView: View {
                     Text("Learning Tips")
                         .font(.headline)
                         .fontWeight(.semibold)
+                        .foregroundColor(.appRed)
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") {
@@ -827,7 +834,7 @@ struct TipSection: View {
             Text(number)
                 .font(.title2)
                 .fontWeight(.bold)
-                .foregroundColor(.blue)
+                .foregroundColor(.appRed)
                 .frame(width: 30)
             
             VStack(alignment: .leading, spacing: 8) {
@@ -848,7 +855,7 @@ struct TipSection: View {
                             Text("Bad")
                                 .font(.subheadline)
                                 .fontWeight(.semibold)
-                                .foregroundColor(.red)
+                                .foregroundColor(.appRed)
                         }
                         Text(badExample)
                             .font(.body)
@@ -963,6 +970,7 @@ struct TermsPrivacyView: View {
                     Text("Terms & Privacy")
                         .font(.headline)
                         .fontWeight(.semibold)
+                        .foregroundColor(.appRed)
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") {
@@ -1180,7 +1188,7 @@ struct HelpSupportView: View {
                         if showError && !allFieldsFilled {
                             Section {
                                 Text("All fields are required.")
-                                    .foregroundColor(.red)
+                                    .foregroundColor(.appRed)
                                     .font(.subheadline)
                             }
                         }
@@ -1199,7 +1207,7 @@ struct HelpSupportView: View {
                                     .foregroundColor(.white)
                                     .frame(maxWidth: .infinity)
                                     .frame(height: 50)
-                                    .background(allFieldsFilled ? Color.green : Color.gray)
+                                    .background(allFieldsFilled ? Color.appRed : Color.gray)
                                     .cornerRadius(12)
                             }
                             .disabled(!allFieldsFilled)
@@ -1212,6 +1220,7 @@ struct HelpSupportView: View {
                             Text("Contact us")
                                 .font(.headline)
                                 .fontWeight(.semibold)
+                                .foregroundColor(.appRed)
                         }
                     }
                 } else {
@@ -1240,7 +1249,7 @@ struct HelpSupportView: View {
                                 Text("Email: abashelariprod@gmail.com")
                                     .font(.subheadline)
                                 
-                                Text("Website: https://abashelariprod.wordpress.com")
+                                Text("Website: https://abashelari.com")
                                     .font(.subheadline)
                                 
                                 Divider()
@@ -1265,7 +1274,7 @@ struct HelpSupportView: View {
                                     .foregroundColor(.white)
                                     .frame(maxWidth: .infinity)
                                     .frame(height: 50)
-                                    .background(Color.green)
+                                    .background(Color.appRed)
                                     .cornerRadius(12)
                                     .padding(.horizontal, 32)
                             }
@@ -1285,6 +1294,7 @@ struct HelpSupportView: View {
                             Text("Help & Support")
                                 .font(.headline)
                                 .fontWeight(.semibold)
+                                .foregroundColor(.appRed)
                         }
                     }
                 }
@@ -1354,6 +1364,7 @@ struct AboutView: View {
                         Text("About SWWorder")
                             .font(.title2)
                             .fontWeight(.bold)
+                            .foregroundColor(.appRed)
                         
                         Text("SWWorder is a Swedish word order practice app designed to help you master Swedish sentence structure with ease. Practice word order with sentence blocks (V2 rule, negation, questions, auxiliaries), complete practice sessions, track your progress through session summaries and history, and use grammar tips and translations. Set daily reminders to keep your practice consistent and build your Swedish word order skills systematically.")
                             .font(.body)
@@ -1367,6 +1378,7 @@ struct AboutView: View {
                         Text("About ABASHELARI")
                             .font(.title2)
                             .fontWeight(.bold)
+                            .foregroundColor(.appRed)
                         
                         Text("At ABASHELARI, we believe in creating software that makes everyday life simpler, smarter, and more enjoyable. Our mission is to develop innovative digital solutions that blend creativity with technology, offering users tools that are intuitive, reliable, and engaging.")
                             .font(.body)
@@ -1390,6 +1402,7 @@ struct AboutView: View {
                     Text("About")
                         .font(.headline)
                         .fontWeight(.semibold)
+                        .foregroundColor(.appRed)
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") {

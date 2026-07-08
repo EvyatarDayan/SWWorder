@@ -46,7 +46,7 @@ struct MyListView: View {
                     Spacer()
                     Text("My list")
                         .font(.system(size: 28, weight: .bold, design: .rounded))
-                        .foregroundColor(.blue)
+                        .foregroundColor(.appRed)
                     Spacer()
                 }
             }
@@ -109,7 +109,7 @@ struct MyListView: View {
                     Text("No results found")
                         .font(.title2)
                         .fontWeight(.semibold)
-                        .foregroundColor(.primary)
+                        .foregroundColor(.appRed)
                     Text("Try a different search term")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
@@ -132,14 +132,15 @@ struct MyListView: View {
         VStack(spacing: 20) {
             Image("My list")
                 .resizable()
+                .renderingMode(.template)
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 80, height: 80)
-                .foregroundColor(.secondary)
+                .foregroundColor(.appRed)
             
             Text("No words in your list")
                 .font(.title2)
                 .fontWeight(.semibold)
-                .foregroundColor(.primary)
+                .foregroundColor(.appRed)
             
             Text("Add words to your list from the test or practice view")
                 .font(.subheadline)
@@ -198,7 +199,7 @@ struct MyListWordRow: View {
                     Text(word.swedish.singleSpaced)
                         .font(.title3)
                         .fontWeight(.semibold)
-                        .foregroundColor(.primary)
+                        .foregroundColor(.appRed)
                         .lineLimit(1)
                         .truncationMode(.tail)
 
@@ -263,7 +264,7 @@ struct MyListWordDetailModal: View {
                     Button(action: { dismiss() }) {
                         Text("Done")
                             .font(.body)
-                            .foregroundColor(.blue)
+                            .foregroundColor(.appRed)
                     }
                     .padding(.top, 20)
                     .padding(.trailing, 10)
@@ -275,7 +276,7 @@ struct MyListWordDetailModal: View {
                         Spacer()
                         Text("More info")
                             .font(.system(size: 20, weight: .bold))
-                            .foregroundColor(.primary)
+                            .foregroundColor(.appRed)
                             .padding(.bottom, 30)
                         Spacer()
                     }
@@ -321,7 +322,7 @@ struct MyListWordDetailModal: View {
                                             // The token itself
                                             Text(token)
                                                 .font(.system(size: 28, weight: .bold))
-                                                .foregroundColor(.blue)
+                                                .foregroundColor(.appRed)
                                                 .multilineTextAlignment(.center)
                                         }
                                         .padding(.horizontal, 2)
@@ -370,7 +371,7 @@ struct MyListWordDetailModal: View {
                                     .foregroundColor(.white)
                                     .frame(maxWidth: .infinity)
                                     .padding(.vertical, 16)
-                                    .background(Color.blue)
+                                    .background(Color.appRed)
                                     .cornerRadius(12)
                             }
                             .padding(.horizontal, 20)

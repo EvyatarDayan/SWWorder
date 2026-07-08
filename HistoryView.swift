@@ -59,7 +59,7 @@ struct HistoryView: View {
                     Spacer()
                     Text("History")
                         .font(.system(size: 28, weight: .bold, design: .rounded))
-                        .foregroundColor(.blue)
+                        .foregroundColor(.appRed)
                     Spacer()
                 }
             }
@@ -116,6 +116,7 @@ struct HistoryView: View {
             Text("No History Yet")
                 .font(.title2)
                 .fontWeight(.semibold)
+                .foregroundColor(.appRed)
             Text(emptyStateMessage)
                 .font(.subheadline)
                 .foregroundColor(.secondary)
@@ -301,7 +302,7 @@ struct HistoryDetailModal: View {
                         .foregroundColor(.gray)
                     Text(example.answer.singleSpaced)
                         .font(.system(size: 18, weight: .bold))
-                        .foregroundColor(correct == nil ? .primary : (correct! ? .green : .red))
+                        .foregroundColor(correct == nil ? .primary : (correct! ? .green : .appRed))
                 }
                 if let ua = userAnswer, !ua.isEmpty {
                     Text("You: \(ua)")
@@ -372,13 +373,13 @@ struct HistoryDetailModal: View {
                     }) {
                         Text("Retake")
                             .font(.body)
-                            .foregroundColor(.blue)
+                            .foregroundColor(.appRed)
                     }
                     Spacer()
                     Button(action: { dismiss() }) {
                         Text("Done")
                             .font(.body)
-                            .foregroundColor(.blue)
+                            .foregroundColor(.appRed)
                     }
                 }
                 .buttonStyle(PlainButtonStyle())
@@ -388,7 +389,7 @@ struct HistoryDetailModal: View {
                     Spacer()
                     Text("Details")
                         .font(.system(size: 20, weight: .bold))
-                        .foregroundColor(.primary)
+                        .foregroundColor(.appRed)
                     Spacer()
                 }
             }
@@ -477,7 +478,7 @@ struct HistoryDetailModal: View {
                         Button(action: { dismiss() }) {
                             Text("Done")
                                 .font(.body)
-                                .foregroundColor(.blue)
+                                .foregroundColor(.appRed)
                         }
                         .padding(.top, 20)
                         .padding(.trailing, 10)
@@ -525,7 +526,7 @@ struct HistoryDetailModal: View {
 
                                                 Text(token)
                                                     .font(.system(size: 28, weight: .bold))
-                                                    .foregroundColor(.blue)
+                                                    .foregroundColor(.appRed)
                                                     .multilineTextAlignment(.center)
                                             }
                                             .padding(.horizontal, 2)
@@ -572,7 +573,7 @@ struct HistoryDetailModal: View {
                                         .foregroundColor(.white)
                                         .frame(maxWidth: .infinity)
                                         .padding(.vertical, 16)
-                                        .background(Color.blue)
+                                        .background(Color.appRed)
                                         .cornerRadius(12)
                                 }
                                 .padding(.horizontal, 20)
@@ -630,7 +631,7 @@ struct HistoryResultRow: View {
                             Text(typeLabel)
                                 .font(.system(size: isLargePhone ? 20 : 18))
                                 .fontWeight(.medium)
-                                .foregroundColor(.blue)
+                                .foregroundColor(.appRed)
                             Text("•")
                                 .foregroundColor(.secondary)
                         }
@@ -681,7 +682,7 @@ struct HistoryResultRow: View {
         
         var wrongAttr = AttributedString("Wrong: \(wrong)")
         wrongAttr.font = (.system(size: isLargePhone ? 15 : 13, weight: .bold))
-        wrongAttr.foregroundColor = .red
+        wrongAttr.foregroundColor = .appRed
         attributedString.append(wrongAttr)
         
         var dash3 = AttributedString(" - ")

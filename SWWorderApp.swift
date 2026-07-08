@@ -12,6 +12,7 @@ struct SWWorderApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .tint(.appRed)
         }
     }
 }
